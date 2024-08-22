@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Step-by-step guide on Wi-Fi hacking techniques for ethical hacking purposes.">
+    <title>Wi-Fi Hacking in Ethical Hacking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgba(0, 0, 21, 1); /* Dark Blue Background */
+            color: #f4f4f4; /* Light gray text for readability */
+            line-height: 1.6;
+            position: relative;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #1c1c1c; /* Dark gray container background for contrast */
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+        }
+        h1, h2 {
+            color: #c7d0d8; /* Softer gray for headings */
+        }
+        code {
+            background-color: #2a2a2a;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #c7d0d8; /* Code color for readability */
+        }
+        pre {
+            background-color: #111;
+            color: #eee;
+            padding: 10px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        ol li {
+            margin-bottom: 10px;
+        }
+        .footer {
+            margin-top: 40px;
+            font-size: 0.8em;
+            color: #999;
+            text-align: center;
+        }
+        a {
+            color: #a8c1e1; /* Light blue for links */
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: inline-block;
+            padding: 12px;
+            background-color: #3a3a3a;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50%;
+            font-size: 20px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .back-button:hover {
+            background-color: #555;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-button">&#8592;</a> <!-- Back arrow button in top-left -->
+
+        <h1>Wi-Fi Hacking in Ethical Hacking</h1>
+        <p>Wi-Fi hacking involves testing the security of wireless networks to identify potential vulnerabilities. This guide provides a step-by-step overview of various techniques used in Wi-Fi security testing. Ensure you have explicit permission before conducting any Wi-Fi hacking activities.</p>
+        
+        <h2>1. Understanding Wi-Fi Security</h2>
+        <p>Wi-Fi networks use various encryption protocols to secure wireless communications. Understanding these protocols is crucial for ethical hacking.</p>
+        <ol>
+            <li><strong>WEP (Wired Equivalent Privacy):</strong> An outdated and weak encryption protocol. It is easily cracked using tools available in the public domain.</li>
+            <li><strong>WPA (Wi-Fi Protected Access):</strong> A more secure encryption protocol compared to WEP, but still vulnerable to attacks if not configured properly.</li>
+            <li><strong>WPA2 (Wi-Fi Protected Access II):</strong> The current standard for secure Wi-Fi networks. It uses AES encryption, which is significantly more secure than WPA.</li>
+            <li><strong>WPA3:</strong> The latest security protocol offering enhanced protection against brute-force attacks and improved encryption standards.</li>
+        </ol>
+
+        <h2>2. Tools for Wi-Fi Hacking</h2>
+        <p>Several tools are used for testing Wi-Fi security. These tools help in identifying weaknesses and securing the network:</p>
+        <ol>
+            <li><strong>Aircrack-ng:</strong> A suite of tools used for assessing Wi-Fi network security. It can crack WEP and WPA/WPA2 keys through various attacks.</li>
+            <li><strong>Reaver:</strong> A tool used to exploit WPS (Wi-Fi Protected Setup) vulnerabilities to recover WPA/WPA2 passphrases.</li>
+            <li><strong>Hashcat:</strong> A password-cracking tool that supports a variety of hashing algorithms and is often used to crack WPA/WPA2 password hashes.</li>
+            <li><strong>Fern Wi-Fi Cracker:</strong> A graphical tool designed for penetration testing and security auditing of wireless networks.</li>
+        </ol>
+
+        <h2>3. Cracking WEP Encryption</h2>
+        <p>WEP encryption is outdated and easily cracked. Here’s how you can use Aircrack-ng to crack WEP keys:</p>
+        <ol>
+            <li><strong>Capture Packets:</strong> Use <code>airmon-ng</code> to enable monitor mode on your Wi-Fi adapter, then use <code>airodump-ng</code> to capture packets from the target network.</li>
+            <li><strong>Perform Injection:</strong> Inject packets into the network to increase the amount of captured data. Use <code>aireplay-ng</code> for packet injection.</li>
+            <li><strong>Crack the Key:</strong> Once you have enough data, use <code>aircrack-ng</code> to crack the WEP key. Example command:</li>
+            <pre><code>aircrack-ng -b [TARGET-BSSID] [CAPTURED-FILE].cap</code></pre>
+        </ol>
+
+        <h2>4. Cracking WPA/WPA2 Encryption</h2>
+        <p>Cracking WPA/WPA2 requires capturing the handshake and then performing a dictionary attack. Here’s how:</p>
+        <ol>
+            <li><strong>Capture Handshake:</strong> Use <code>airodump-ng</code> to capture the WPA/WPA2 handshake when a client connects to the network.</li>
+            <li><strong>Crack the Password:</strong> Use <code>aircrack-ng</code> with a wordlist to perform a dictionary attack. Example command:</li>
+            <pre><code>aircrack-ng -w [WORDLIST] -b [TARGET-BSSID] [CAPTURED-FILE].cap</code></pre>
+            <li><strong>Using Hashcat:</strong> Alternatively, use <code>hashcat</code> for more efficient cracking. Example command:</li>
+            <pre><code>hashcat -m 2500 -a 0 [CAPTURED-HANDSHAKE].hccapx [WORDLIST]</code></pre>
+        </ol>
+
+        <h2>5. Ethical Considerations</h2>
+        <p>Always perform Wi-Fi hacking activities within ethical and legal boundaries. Unauthorized access to wireless networks is illegal and unethical.</p>
+        <ol>
+            <li><strong>Get Proper Authorization:</strong> Ensure you have explicit permission from the network owner or organization before conducting any tests.</li>
+            <li><strong>Use Tools Responsibly:</strong> Only use Wi-Fi hacking tools for educational purposes or with proper authorization to improve network security.</li>
+        </ol>
+
+        <h2>6. Conclusion</h2>
+        <p>Wi-Fi hacking is a powerful technique for testing the security of wireless networks. By understanding the encryption protocols and using appropriate tools, you can identify vulnerabilities and improve network security. Always operate within ethical and legal boundaries to ensure responsible use of your skills.</p>
+
+        <div class="footer">
+            <p>&copy; 2024 Ethical Hacking Tutorials. This guide is for educational purposes only. Unauthorized Wi-Fi hacking is illegal.</p>
+        </div>
+    </div>
+</body>
+</html>

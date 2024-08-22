@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Step-by-step guide on database hacking techniques for ethical hacking purposes.">
+    <title>Database Hacking in Ethical Hacking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgba(0, 0, 21, 1); /* Dark Blue Background */
+            color: #f4f4f4; /* Light gray text for readability */
+            line-height: 1.6;
+            position: relative;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #1c1c1c; /* Dark gray container background for contrast */
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+        }
+        h1, h2 {
+            color: #c7d0d8; /* Softer gray for headings */
+        }
+        code {
+            background-color: #2a2a2a;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #c7d0d8; /* Code color for readability */
+        }
+        pre {
+            background-color: #111;
+            color: #eee;
+            padding: 10px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        ol li {
+            margin-bottom: 10px;
+        }
+        .footer {
+            margin-top: 40px;
+            font-size: 0.8em;
+            color: #999;
+            text-align: center;
+        }
+        a {
+            color: #a8c1e1; /* Light blue for links */
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: inline-block;
+            padding: 12px;
+            background-color: #3a3a3a;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50%;
+            font-size: 20px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .back-button:hover {
+            background-color: #555;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-button">&#8592;</a> <!-- Back arrow button in top-left -->
+
+        <h1>Database Hacking in Ethical Hacking</h1>
+        <p>Database hacking involves exploiting vulnerabilities in database systems to gain unauthorized access to data. This guide provides a step-by-step overview of different techniques used in database hacking and how they can be applied in ethical hacking. Always ensure you have explicit permission before performing any database hacking activities.</p>
+        
+        <h2>1. Understanding Database Hacking</h2>
+        <p>Database hacking can involve various techniques to gain access to or manipulate data stored in a database. Common techniques include:</p>
+        <ol>
+            <li><strong>SQL Injection:</strong> Exploiting vulnerabilities in web applications to execute malicious SQL queries.</li>
+            <li><strong>Brute Force Attacks:</strong> Trying different combinations to guess database passwords.</li>
+            <li><strong>Privilege Escalation:</strong> Gaining higher-level access to a database by exploiting misconfigurations or vulnerabilities.</li>
+            <li><strong>Database Exploits:</strong> Using known exploits or vulnerabilities in database management systems (DBMS) to gain unauthorized access.</li>
+        </ol>
+
+        <h2>2. Tools for Database Hacking</h2>
+        <p>Several tools can be used for database hacking, each with different functionalities:</p>
+        <ol>
+            <li><strong>SQLmap:</strong> An open-source tool used for detecting and exploiting SQL injection vulnerabilities.</li>
+            <li><strong>Burp Suite:</strong> A web vulnerability scanner that can identify and exploit SQL injection and other web vulnerabilities.</li>
+            <li><strong>Metasploit:</strong> A penetration testing framework that includes modules for exploiting database vulnerabilities.</li>
+            <li><strong>Nmap:</strong> A network scanning tool that can be used to detect open ports and services, including databases.</li>
+            <li><strong>Hydra:</strong> A fast and flexible password cracking tool that supports brute-force attacks on database authentication.</li>
+        </ol>
+
+        <h2>3. Performing SQL Injection</h2>
+        <p>Here’s a basic overview of performing an SQL injection attack using SQLmap:</p>
+        <ol>
+            <li><strong>Install SQLmap:</strong> Download and install SQLmap. Example installation command:</li>
+            <pre><code>sudo apt-get install sqlmap</code></pre>
+            <li><strong>Identify Vulnerable Input:</strong> Locate a vulnerable input field in a web application, such as a search box or login form.</li>
+            <li><strong>Run SQLmap:</strong> Use SQLmap to test and exploit the vulnerability. Example command:</li>
+            <pre><code>sqlmap -u "http://example.com/search.php?query=parameter" --dbs</code></pre>
+            <li><strong>Review Results:</strong> Examine the results to identify available databases and further exploit vulnerabilities.</li>
+        </ol>
+
+        <h2>4. Performing Brute Force Attacks</h2>
+        <p>For a brute force attack on a database password using Hydra:</p>
+        <ol>
+            <li><strong>Prepare Your List:</strong> Create or download a list of common passwords to use in the attack. Example list file:</li>
+            <pre><code>/path/to/password-list.txt</code></pre>
+            <li><strong>Run the Attack:</strong> Execute the brute force attack against a database service. Example command for MySQL:</li>
+            <pre><code>hydra -L /path/to/usernames.txt -P /path/to/password-list.txt mysql://<target-ip></code></pre>
+            <li><strong>Review Results:</strong> Check the results for successful login attempts.</li>
+        </ol>
+
+        <h2>5. Ethical Considerations</h2>
+        <p>Always conduct database hacking ethically and legally. Unauthorized database hacking can lead to severe legal and ethical consequences.</p>
+        <ol>
+            <li><strong>Obtain Permission:</strong> Ensure you have explicit authorization from the system owner or organization before performing any database hacking activities.</li>
+            <li><strong>Use Responsibly:</strong> Use database hacking techniques for legitimate security assessments and not for malicious purposes.</li>
+        </ol>
+
+        <h2>6. Conclusion</h2>
+        <p>Database hacking is a crucial aspect of security testing that involves various techniques to exploit vulnerabilities and gain unauthorized access to data. By understanding different hacking techniques and using appropriate tools, you can help identify and address potential security issues. Always operate within legal and ethical boundaries to ensure responsible use of your skills.</p>
+
+        <div class="footer">
+            <p>&copy; 2024 Ethical Hacking Tutorials. This guide is for educational purposes only. Unauthorized database hacking is illegal.</p>
+        </div>
+    </div>
+</body>
+</html>

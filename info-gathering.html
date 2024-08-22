@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Step-by-step guide on how to gather information for ethical hacking purposes.">
+    <title>Information Gathering in Ethical Hacking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgba(0, 0, 21, 1); /* Dark Blue Background */
+            color: #f4f4f4; /* Light gray text for readability */
+            line-height: 1.6;
+            position: relative;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #1c1c1c; /* Dark gray container background for contrast */
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+        }
+        h1, h2 {
+            color: #c7d0d8; /* Softer gray for headings */
+        }
+        code {
+            background-color: #2a2a2a;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #c7d0d8; /* Code color for readability */
+        }
+        pre {
+            background-color: #111;
+            color: #eee;
+            padding: 10px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        ol li {
+            margin-bottom: 10px;
+        }
+        .footer {
+            margin-top: 40px;
+            font-size: 0.8em;
+            color: #999;
+            text-align: center;
+        }
+        a {
+            color: #a8c1e1; /* Light blue for links */
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: inline-block;
+            padding: 12px;
+            background-color: #3a3a3a;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50%;
+            font-size: 20px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .back-button:hover {
+            background-color: #555;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-button">&#8592;</a> <!-- Back arrow button in top-left -->
+
+        <h1>Information Gathering in Ethical Hacking</h1>
+        <p>Information gathering, also known as reconnaissance, is the first step in ethical hacking. It involves collecting data about the target system, network, or organization to find potential vulnerabilities. Below is a step-by-step guide to performing effective information gathering.</p>
+        
+        <h2>1. Passive Information Gathering</h2>
+        <p>In passive information gathering, you collect data about the target without directly interacting with it. This reduces the risk of detection. The following tools and methods are commonly used:</p>
+        <ol>
+            <li><strong>Google Dorking:</strong> Use advanced Google search queries to find publicly available information about the target. For example, <code>site:example.com</code> can show indexed pages of the target domain.</li>
+            <li><strong>Whois Lookup:</strong> Use <a href="https://whois.domaintools.com">Whois</a> to gather information about the domain registration, including the registrar, domain owner, and server details.</li>
+            <li><strong>Social Media Reconnaissance:</strong> Investigate the target's social media profiles to find useful information, such as employee names, job titles, and potential security gaps.</li>
+            <li><strong>Shodan:</strong> Shodan is a search engine that lets you find specific types of devices (e.g., webcams, routers) connected to the internet. Use it to locate exposed devices linked to the target network.</li>
+        </ol>
+
+        <h2>2. Active Information Gathering</h2>
+        <p>Active information gathering involves interacting with the target system, which can increase the risk of detection. Here are some common tools and methods:</p>
+        <ol>
+            <li><strong>Ping Sweeping:</strong> Use tools like <code>fping</code> to ping a range of IP addresses and check which hosts are active on the network.</li>
+            <li><strong>Port Scanning:</strong> Use a tool like <code>nmap</code> to scan for open ports and determine the services running on the target system. For example, to scan a specific IP, use:</li>
+            <pre><code>nmap -sS -p- 192.168.1.1</code></pre>
+            <li><strong>Banner Grabbing:</strong> Use banner grabbing techniques to identify the software version running on a target system's service. For example, use <code>nc</code> (Netcat) or <code>telnet</code> to connect to an open port and view the service banner.</li>
+            <li><strong>DNS Enumeration:</strong> Use tools like <code>dnsenum</code> or <code>fierce</code> to gather DNS records associated with the target domain.</li>
+        </ol>
+
+        <h2>3. Tools for Information Gathering</h2>
+        <p>Here are some popular tools used in information gathering for ethical hacking:</p>
+        <ol>
+            <li><strong>Maltego:</strong> A graphical link analysis tool that allows you to perform open-source intelligence and forensics. It helps visualize relationships between people, organizations, domains, and more.</li>
+            <li><strong>Recon-ng:</strong> A full-featured web reconnaissance framework written in Python. It provides modules for collecting information from various online sources.</li>
+            <li><strong>TheHarvester:</strong> A tool designed to gather emails, subdomains, IPs, and URLs by performing OSINT (Open Source Intelligence).</li>
+            <li><strong>SpiderFoot:</strong> An open-source intelligence automation tool that helps collect and visualize data from multiple sources about a target.</li>
+        </ol>
+
+        <h2>4. Ethical Considerations</h2>
+        <p>While gathering information, always ensure you have permission from the target organization if you are performing these tasks in a real-world scenario. Unauthorized information gathering can be illegal and unethical.</p>
+        <ol>
+            <li><strong>Get proper authorization:</strong> Before starting, obtain written consent from the organization or client you're working with.</li>
+            <li><strong>Use legal tools and methods:</strong> Ensure the tools and techniques you use comply with local laws and regulations.</li>
+        </ol>
+
+        <h2>5. Conclusion</h2>
+        <p>Information gathering is a critical phase of ethical hacking, providing insights that can help identify vulnerabilities in a target system or network. Use the information responsibly and ethically, and always operate within the legal boundaries.</p>
+
+        <div class="footer">
+            <p>&copy; 2024 Ethical Hacking Tutorials. This guide is for educational purposes only. Unauthorized information gathering is illegal.</p>
+        </div>
+    </div>
+</body>
+</html>

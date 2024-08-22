@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Step-by-step guide on website penetration testing techniques for ethical hacking purposes.">
+    <title>Website Penetration Testing in Ethical Hacking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgba(0, 0, 21, 1); /* Dark Blue Background */
+            color: #f4f4f4; /* Light gray text for readability */
+            line-height: 1.6;
+            position: relative;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #1c1c1c; /* Dark gray container background for contrast */
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+        }
+        h1, h2 {
+            color: #c7d0d8; /* Softer gray for headings */
+        }
+        code {
+            background-color: #2a2a2a;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #c7d0d8; /* Code color for readability */
+        }
+        pre {
+            background-color: #111;
+            color: #eee;
+            padding: 10px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        ol li {
+            margin-bottom: 10px;
+        }
+        .footer {
+            margin-top: 40px;
+            font-size: 0.8em;
+            color: #999;
+            text-align: center;
+        }
+        a {
+            color: #a8c1e1; /* Light blue for links */
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: inline-block;
+            padding: 12px;
+            background-color: #3a3a3a;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50%;
+            font-size: 20px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .back-button:hover {
+            background-color: #555;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-button">&#8592;</a> <!-- Back arrow button in top-left -->
+
+        <h1>Website Penetration Testing in Ethical Hacking</h1>
+        <p>Website penetration testing involves assessing a website’s security by identifying vulnerabilities and weaknesses that could be exploited by malicious actors. This guide provides a step-by-step overview of common techniques used in ethical website penetration testing.</p>
+        
+        <h2>1. Understanding Website Security</h2>
+        <p>Website security involves protecting web applications and servers from unauthorized access, data breaches, and other cyber threats. Key areas to consider include:</p>
+        <ol>
+            <li><strong>Input Validation:</strong> Ensuring that user inputs are properly validated and sanitized to prevent injection attacks.</li>
+            <li><strong>Authentication and Authorization:</strong> Implementing strong authentication mechanisms and ensuring that users have appropriate permissions.</li>
+            <li><strong>Session Management:</strong> Securely managing user sessions to prevent session hijacking and fixation attacks.</li>
+            <li><strong>Encryption:</strong> Protecting data in transit and at rest using encryption protocols.</li>
+        </ol>
+
+        <h2>2. Tools for Website Penetration Testing</h2>
+        <p>Several tools are used for testing website security. These tools help in identifying vulnerabilities and ensuring that the website is secure:</p>
+        <ol>
+            <li><strong>OWASP ZAP:</strong> An open-source web application security scanner used for finding vulnerabilities in web applications.</li>
+            <li><strong>Burp Suite:</strong> A comprehensive suite of tools for web application security testing, including a proxy, scanner, and intruder tools.</li>
+            <li><strong>Nikto:</strong> A web server scanner that performs comprehensive tests against web servers to identify vulnerabilities.</li>
+            <li><strong>SQLmap:</strong> An open-source tool used for automating the process of detecting and exploiting SQL injection vulnerabilities.</li>
+            <li><strong>Wapiti:</strong> A web application vulnerability scanner that allows you to audit the security of your web applications.</li>
+        </ol>
+
+        <h2>3. Performing Basic Security Tests</h2>
+        <p>Here are some fundamental tests to perform when assessing a website’s security:</p>
+        <ol>
+            <li><strong>Check for SQL Injection:</strong> Test user input fields for SQL injection vulnerabilities using tools like <code>sqlmap</code> or manual testing techniques. Example command with <code>sqlmap</code>:</li>
+            <pre><code>sqlmap -u "http://example.com/page.php?id=1" --dbs</code></pre>
+            <li><strong>Test for XSS Vulnerabilities:</strong> Check if the application is vulnerable to Cross-Site Scripting (XSS) attacks by injecting malicious scripts into input fields and observing the behavior.</li>
+            <li><strong>Assess Authentication Mechanisms:</strong> Test the robustness of login mechanisms, including brute-force attacks and password strength checks. Use tools like <code>Hydra</code> or <code>Burp Suite</code> for testing.</li>
+            <li><strong>Check for Sensitive Data Exposure:</strong> Ensure that sensitive data such as passwords and personal information is properly encrypted and not exposed in URLs or error messages.</li>
+        </ol>
+
+        <h2>4. Advanced Security Testing</h2>
+        <p>For a more comprehensive security assessment, consider the following advanced techniques:</p>
+        <ol>
+            <li><strong>Conduct a Vulnerability Assessment:</strong> Use tools like <code>OWASP ZAP</code> or <code>Burp Suite</code> to perform automated vulnerability scans and identify potential weaknesses.</li>
+            <li><strong>Perform Penetration Testing:</strong> Simulate real-world attacks to identify and exploit vulnerabilities. Tools like <code>Metasploit</code> can be used to exploit vulnerabilities and gain access.</li>
+            <li><strong>Review Source Code:</strong> If you have access to the source code, perform a code review to identify security flaws and vulnerabilities.</li>
+        </ol>
+
+        <h2>5. Ethical Considerations</h2>
+        <p>Always conduct website penetration testing ethically and legally. Unauthorized access to websites can result in serious legal consequences.</p>
+        <ol>
+            <li><strong>Obtain Permission:</strong> Ensure you have explicit authorization from the website owner or organization before conducting any security tests.</li>
+            <li><strong>Report Findings:</strong> After identifying vulnerabilities, provide a detailed report to the website owner or client to help them improve their security.</li>
+        </ol>
+
+        <h2>6. Conclusion</h2>
+        <p>Website penetration testing is a critical practice in identifying and addressing security vulnerabilities in web applications. By understanding common vulnerabilities, using appropriate tools, and performing ethical testing, you can help ensure that websites are secure and protected against malicious attacks.</p>
+
+        <div class="footer">
+            <p>&copy; 2024 Ethical Hacking Tutorials. This guide is for educational purposes only. Unauthorized website testing is illegal.</p>
+        </div>
+    </div>
+</body>
+</html>

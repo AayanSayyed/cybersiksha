@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Step-by-step guide on network spying techniques for ethical hacking.">
+    <title>Network Spying in Ethical Hacking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgba(0, 0, 21, 1); /* Dark Blue Background */
+            color: #f4f4f4; /* Light gray text for readability */
+            line-height: 1.6;
+            position: relative;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #1c1c1c; /* Dark gray container background for contrast */
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+        }
+        h1, h2 {
+            color: #c7d0d8; /* Softer gray for headings */
+        }
+        code {
+            background-color: #2a2a2a;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #c7d0d8; /* Code color for readability */
+        }
+        pre {
+            background-color: #111;
+            color: #eee;
+            padding: 10px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        ol li {
+            margin-bottom: 10px;
+        }
+        .footer {
+            margin-top: 40px;
+            font-size: 0.8em;
+            color: #999;
+            text-align: center;
+        }
+        a {
+            color: #a8c1e1; /* Light blue for links */
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: inline-block;
+            padding: 12px;
+            background-color: #3a3a3a;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50%;
+            font-size: 20px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .back-button:hover {
+            background-color: #555;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-button">&#8592;</a> <!-- Back arrow button in top-left -->
+
+        <h1>Network Spying in Ethical Hacking</h1>
+        <p>Network spying, also known as packet sniffing or network monitoring, involves capturing data packets traveling across a network. Ethical hackers use network spying techniques to analyze network traffic and identify security vulnerabilities. Below is a step-by-step guide on performing network spying ethically.</p>
+        
+        <h2>1. Understanding Packet Sniffing</h2>
+        <p>Packet sniffing involves intercepting and logging data traffic that passes through a network. This can be done using various tools that capture packets and display the information for analysis.</p>
+        <ol>
+            <li><strong>Promiscuous Mode:</strong> Enable promiscuous mode on your network interface to allow the network card to capture all network traffic, not just the traffic intended for your device.</li>
+            <li><strong>Ethical Use:</strong> Only perform packet sniffing on networks you have permission to monitor. Unauthorized packet sniffing is illegal and unethical.</li>
+        </ol>
+
+        <h2>2. Tools for Network Spying</h2>
+        <p>There are several tools available for ethical hackers to perform network spying and packet analysis:</p>
+        <ol>
+            <li><strong>Wireshark:</strong> A powerful packet analyzer that allows you to capture and interactively browse the traffic running on a computer network. Use Wireshark to analyze packets and identify potential security issues.</li>
+            <li><strong>tcpdump:</strong> A command-line packet analyzer that allows you to capture network traffic and display it in real-time. It is useful for quickly capturing and filtering traffic for specific use cases.</li>
+            <li><strong>Ettercap:</strong> A comprehensive suite for man-in-the-middle attacks on LAN. It supports active and passive dissection of many protocols and includes features for network spying.</li>
+            <li><strong>Cain & Abel:</strong> A tool that can perform various network spying techniques, including sniffing passwords transmitted over the network.</li>
+        </ol>
+
+        <h2>3. Capturing and Analyzing Packets with Wireshark</h2>
+        <p>Wireshark is one of the most popular tools for network spying. Here’s how to capture and analyze network traffic using Wireshark:</p>
+        <ol>
+            <li><strong>Download and Install Wireshark:</strong> Get Wireshark from the official website at <a href="https://www.wireshark.org">wireshark.org</a> and install it on your system.</li>
+            <li><strong>Start Wireshark:</strong> Open Wireshark and select the network interface you want to monitor (e.g., Ethernet, Wi-Fi).</li>
+            <li><strong>Capture Packets:</strong> Click the "Start Capture" button to begin capturing network traffic. Wireshark will display a live feed of captured packets.</li>
+            <li><strong>Analyze Packets:</strong> Use filters to focus on specific types of traffic, such as HTTP requests or DNS queries. For example, to filter HTTP traffic, use:</li>
+            <pre><code>http</code></pre>
+            <li><strong>Save and Export Data:</strong> Once you’ve captured the data you need, you can save the capture file for later analysis or export specific data.</li>
+        </ol>
+
+        <h2>4. Man-in-the-Middle Attacks</h2>
+        <p>Man-in-the-middle (MITM) attacks involve intercepting communication between two parties. Ethical hackers use this technique in controlled environments to test the security of encrypted communications.</p>
+        <ol>
+            <li><strong>ARP Spoofing:</strong> Use ARP spoofing to redirect network traffic through your device, allowing you to capture and analyze it. Tools like <code>ettercap</code> and <code>arpspoof</code> can be used for this purpose.</li>
+            <li><strong>SSL Stripping:</strong> Some MITM attacks involve stripping away SSL encryption from HTTPS traffic, allowing the attacker to intercept sensitive information. Tools like <code>sslstrip</code> can be used in ethical hacking scenarios to test SSL implementations.</li>
+            <li><strong>Ethical Considerations:</strong> Always ensure you have permission to perform MITM attacks. Unauthorized use can result in legal consequences.</li>
+        </ol>
+
+        <h2>5. Ethical Considerations</h2>
+        <p>Network spying must always be conducted ethically and legally. Unauthorized monitoring of network traffic can result in severe legal penalties. As an ethical hacker, always obtain explicit permission from the network owner before performing any spying activities.</p>
+        <ol>
+            <li><strong>Legal Boundaries:</strong> Understand the legal implications of network spying and adhere to them strictly.</li>
+            <li><strong>Report Findings Responsibly:</strong> After conducting network spying as part of a security assessment, report your findings to the appropriate authorities or clients to improve network security.</li>
+        </ol>
+
+        <h2>6. Conclusion</h2>
+        <p>Network spying is a powerful technique in ethical hacking that allows you to monitor and analyze network traffic to identify vulnerabilities. However, it must always be performed within ethical and legal boundaries. Use network spying tools responsibly and ensure that you have the necessary permissions.</p>
+
+        <div class="footer">
+            <p>&copy; 2024 Ethical Hacking Tutorials. This guide is for educational purposes only. Unauthorized network spying is illegal.</p>
+        </div>
+    </div>
+</body>
+</html>

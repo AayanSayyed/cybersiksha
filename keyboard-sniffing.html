@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Step-by-step guide on keyboard sniffing techniques for ethical hacking purposes.">
+    <title>Keyboard Sniffing in Ethical Hacking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgba(0, 0, 21, 1); /* Dark Blue Background */
+            color: #f4f4f4; /* Light gray text for readability */
+            line-height: 1.6;
+            position: relative;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #1c1c1c; /* Dark gray container background for contrast */
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+        }
+        h1, h2 {
+            color: #c7d0d8; /* Softer gray for headings */
+        }
+        code {
+            background-color: #2a2a2a;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #c7d0d8; /* Code color for readability */
+        }
+        pre {
+            background-color: #111;
+            color: #eee;
+            padding: 10px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        ol li {
+            margin-bottom: 10px;
+        }
+        .footer {
+            margin-top: 40px;
+            font-size: 0.8em;
+            color: #999;
+            text-align: center;
+        }
+        a {
+            color: #a8c1e1; /* Light blue for links */
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: inline-block;
+            padding: 12px;
+            background-color: #3a3a3a;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50%;
+            font-size: 20px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .back-button:hover {
+            background-color: #555;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-button">&#8592;</a> <!-- Back arrow button in top-left -->
+
+        <h1>Keyboard Sniffing in Ethical Hacking</h1>
+        <p>Keyboard sniffing involves capturing keystrokes from a user's keyboard to gather sensitive information, such as passwords or personal data. This guide provides a step-by-step overview of keyboard sniffing techniques used in ethical hacking and penetration testing. Always ensure you have explicit permission before performing any sniffing activities.</p>
+        
+        <h2>1. Understanding Keyboard Sniffing</h2>
+        <p>Keyboard sniffing can be performed using hardware devices or software tools. It's crucial to understand how these methods work to properly test and secure systems.</p>
+        <ol>
+            <li><strong>Hardware Keyloggers:</strong> Physical devices that capture keystrokes from a keyboard and store them for later retrieval.</li>
+            <li><strong>Software Keyloggers:</strong> Malicious programs that record keystrokes and send them to an attacker. These are often hidden in other software or applications.</li>
+        </ol>
+
+        <h2>2. Tools for Keyboard Sniffing</h2>
+        <p>Various tools can be used for keyboard sniffing. These tools help in identifying and monitoring keyboard input for security assessments:</p>
+        <ol>
+            <li><strong>Keylogger Software:</strong> Applications designed to record keystrokes. Examples include <code>Revealer Keylogger</code> and <code>Ardamax Keylogger</code>.</li>
+            <li><strong>Hardware Keyloggers:</strong> Physical devices that can be plugged between the keyboard and computer. Examples include <code>KeyGrabber</code> and <code>USB Keylogger</code>.</li>
+            <li><strong>Keylogger Detection Tools:</strong> Tools used to detect and prevent keyloggers, such as <code>Anti-Keylogger</code> and <code>Spybot - Search & Destroy</code>.</li>
+        </ol>
+
+        <h2>3. Setting Up a Keylogger</h2>
+        <p>For educational purposes, here’s a basic overview of setting up a software keylogger:</p>
+        <ol>
+            <li><strong>Choose a Keylogger:</strong> Select a software keylogger that fits your needs. Ensure it is used within legal boundaries and with permission.</li>
+            <li><strong>Install the Keylogger:</strong> Follow the installation instructions provided by the keylogger software. Example installation command for a hypothetical keylogger:</li>
+            <pre><code>sudo apt-get install keylogger-software</code></pre>
+            <li><strong>Configure the Keylogger:</strong> Set up the keylogger to capture keystrokes and specify where to store or send the data. Example configuration:</li>
+            <pre><code>keylogger-config --output /path/to/logfile --send email@example.com</code></pre>
+            <li><strong>Monitor Captured Data:</strong> Regularly check the output file or email to review the captured keystrokes. Example command to view the logfile:</li>
+            <pre><code>cat /path/to/logfile</code></pre>
+        </ol>
+
+        <h2>4. Detecting Keyloggers</h2>
+        <p>It's important to be able to detect keyloggers to prevent unauthorized monitoring. Here’s how to detect and remove them:</p>
+        <ol>
+            <li><strong>Run Antivirus Scans:</strong> Use antivirus software to scan for and remove keylogger software. Example command with <code>ClamAV</code>:</li>
+            <pre><code>clamscan --remove --recursive /path/to/scan</code></pre>
+            <li><strong>Check Installed Applications:</strong> Review installed programs and look for suspicious or unfamiliar applications. Use <code>ps</code> command to check running processes:</li>
+            <pre><code>ps aux | grep keylogger</code></pre>
+            <li><strong>Inspect Hardware:</strong> Physically inspect your keyboard and computer for any unauthorized hardware devices.</li>
+        </ol>
+
+        <h2>5. Ethical Considerations</h2>
+        <p>Always conduct keyboard sniffing within ethical and legal boundaries. Unauthorized keylogging is illegal and unethical.</p>
+        <ol>
+            <li><strong>Obtain Permission:</strong> Ensure you have explicit authorization from the system owner or organization before deploying or testing keyloggers.</li>
+            <li><strong>Use Responsibly:</strong> Use keyloggers only for legitimate security assessments and not for malicious purposes.</li>
+        </ol>
+
+        <h2>6. Conclusion</h2>
+        <p>Keyboard sniffing is a technique used to capture keystrokes for security assessments. By understanding how keyloggers work and using appropriate tools, you can help identify and mitigate potential security risks. Always operate ethically and with permission to ensure responsible use of your skills.</p>
+
+        <div class="footer">
+            <p>&copy; 2024 Ethical Hacking Tutorials. This guide is for educational purposes only. Unauthorized keyboard sniffing is illegal.</p>
+        </div>
+    </div>
+</body>
+</html>

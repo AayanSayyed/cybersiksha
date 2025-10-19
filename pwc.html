@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Password Strength Checker – Cyber Siksha</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            font-family: "Segoe UI", sans-serif;
+            background-color: #000;
+            color: white;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: var(--y, 50%);
+            left: var(--x, 50%);
+            width: 1500px;
+            height: 1500px;
+            background: radial-gradient(circle at center, #ff00cc, #3333ff, #00ffcc);
+            opacity: 0.15;
+            transform: translate(-50%, -50%);
+            filter: blur(180px);
+            transition: 0.1s ease-out;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 90%;
+            background: rgba(20, 20, 40, 0.9);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+            text-align: center;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #84e8f0;
+            margin-bottom: 15px;
+        }
+
+        input[type="password"] {
+            padding: 12px;
+            width: 90%;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        .strength {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 18px;
+            color: #00ff99;
+        }
+
+        .feedback {
+            margin-top: 5px;
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 14px;
+            background: #0077cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            z-index: 2;
+        }
+
+        .back-button:hover {
+            background: #005fa3;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 22px;
+            }
+
+            input[type="password"] {
+                width: 100%;
+            }
+
+            .back-button {
+                font-size: 14px;
+                padding: 8px 12px;
+            }
+        }
+    </style>
+</head>
+
+<body onmousemove="moveGradient(event)">
+
+    <a class="back-button" href="main.html">← Back</a>
+
+    <div class="container">
+        <h1>🔐 Password Strength Checker</h1>
+        <p>Type your password below to check its strength:</p><br>
+
+        <input type="password" id="password" placeholder="Enter password">
+        <div class="strength" id="strengthResult"></div>
+        <div class="feedback" id="feedback"></div>
+    </div>
+
+    <script>
+        const passwordInput = document.getElementById("password");
+  const strengthResult = document.getElementById("strengthResult");
+  const feedback = document.getElementById("feedback");
+
+  passwordInput.addEventListener("input", () => {
+    const pwd = passwordInput.value;
+    const result = zxcvbn(pwd);
+
+    const scoreText = [
+      "Very Weak 🔴",
+      "Weak 🟠",
+      "Medium 🟡",
+      "Strong 🟢",
+      "Very Strong 🟢✅"
+    ];
+
+    strengthResult.textContent = pwd
+      ? `Strength: ${scoreText[result.score]}`
+      : "";
+
+    feedback.textContent = result.feedback.suggestions.join(" ");
+  });
+
+  function moveGradient(e) {
+    const x = e.clientX || window.innerWidth / 2;
+    const y = e.clientY || window.innerHeight / 2;
+    document.body.style.setProperty('--x', `${x}px`);
+    document.body.style.setProperty('--y', `${y}px`);
+  }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cyber Quiz – Cyber Siksha</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            font-family: "Segoe UI", sans-serif;
+            background-color: #000;
+            color: white;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: var(--y, 50%);
+            left: var(--x, 50%);
+            width: 1500px;
+            height: 1500px;
+            background: radial-gradient(circle at center, #ff00cc, #3333ff, #00ffcc);
+            opacity: 0.15;
+            transform: translate(-50%, -50%);
+            filter: blur(180px);
+            transition: 0.1s ease-out;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 650px;
+            width: 90%;
+            background: rgba(20, 20, 40, 0.9);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+            text-align: center;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #84e8f0;
+            margin-bottom: 20px;
+        }
+
+        .question {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .answers {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            background: #0077cc;
+            color: white;
+            transition: background 0.2s ease-in-out;
+        }
+
+        button:hover {
+            background: #005fa3;
+        }
+
+        .score {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #00ff99;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 14px;
+            background: #0077cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            z-index: 2;
+        }
+
+        .back-button:hover {
+            background: #005fa3;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 22px;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            .back-button {
+                font-size: 14px;
+                padding: 8px 12px;
+            }
+        }
+    </style>
+</head>
+
+<body onmousemove="moveGradient(event)">
+
+    <a class="back-button" href="main.html">← Back</a>
+
+    <div class="container">
+        <h1>🧠 Cybersecurity Quiz</h1>
+        <div id="quiz-container">
+            <p>Loading quiz...</p>
+        </div>
+    </div>
+
+    <script>
+        let currentQuestion = 0;
+  let score = 0;
+  let questions = [];
+
+  function shuffle(array) {
+    return array.sort(() => Math.random() - 0.5);
+  }
+
+  function loadQuiz() {
+    fetch("https://opentdb.com/api.php?amount=5&category=18&difficulty=medium&type=multiple")
+      .then(res => res.json())
+      .then(data => {
+        questions = data.results;
+        showQuestion();
+      });
+  }
+
+  function showQuestion() {
+    if (currentQuestion >= questions.length) {
+      document.getElementById("quiz-container").innerHTML = `
+        <h2>🎉 Quiz Completed!</h2>
+        <div class="score">Your Score: ${score} / ${questions.length}</div>
+        <button onclick="restartQuiz()">Play Again</button>
+      `;
+      return;
+    }
+
+    const q = questions[currentQuestion];
+    const allAnswers = shuffle([q.correct_answer, ...q.incorrect_answers]);
+
+    document.getElementById("quiz-container").innerHTML = `
+      <div class="question">${currentQuestion + 1}. ${decodeHTML(q.question)}</div>
+      <div class="answers">
+        ${allAnswers.map(ans => `
+          <button onclick="checkAnswer(this, '${escapeQuotes(q.correct_answer)}')">
+            ${decodeHTML(ans)}
+          </button>`).join("")}
+      </div>
+    `;
+  }
+
+  function decodeHTML(html) {
+    const txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+  }
+
+  function escapeQuotes(str) {
+    return str.replace(/'/g, "\\'");
+  }
+
+  function checkAnswer(btn, correct) {
+    const selected = btn.textContent.trim();
+    const decodedCorrect = decodeHTML(correct).trim();
+
+    const buttons = document.querySelectorAll(".answers button");
+
+    buttons.forEach(b => {
+      b.disabled = true;
+      if (b.textContent.trim() === decodedCorrect) {
+        b.style.background = "green";
+      }
+      if (b === btn && selected !== decodedCorrect) {
+        b.style.background = "red";
+      }
+    });
+
+    if (selected === decodedCorrect) {
+      score++;
+    }
+
+    setTimeout(() => {
+      currentQuestion++;
+      showQuestion();
+    }, 1000);
+  }
+
+  function restartQuiz() {
+    currentQuestion = 0;
+    score = 0;
+    loadQuiz();
+  }
+
+  function moveGradient(e) {
+    const x = e.clientX || window.innerWidth / 2;
+    const y = e.clientY || window.innerHeight / 2;
+    document.body.style.setProperty('--x', `${x}px`);
+    document.body.style.setProperty('--y', `${y}px`);
+  }
+
+  loadQuiz();
+    </script>
+
+</body>
+
+</html>

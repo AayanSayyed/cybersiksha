@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cyber Siksha Community Chat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            height: 100%;
+            font-family: 'Segoe UI', sans-serif;
+            background: #0b0b1c;
+            color: white;
+        }
+
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #00ffff;
+            margin-bottom: 15px;
+        }
+
+        #backBtn {
+            background: #00ffff;
+            color: #0b0b1c;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+        }
+
+        #messages {
+            flex: 1;
+            overflow-y: auto;
+            background: #111;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 50px;
+            margin-bottom: 10px;
+            scroll-behavior: smooth;
+        }
+
+        .msg {
+            margin: 5px 0;
+            padding: 8px 12px;
+            background: #1c1c2c;
+            border-radius: 6px;
+        }
+
+        .msg strong {
+            color: #00ffff;
+        }
+
+        #message {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border: none;
+            outline: none;
+        }
+
+        #sendBtn {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            background: #0077cc;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        #sendBtn:hover {
+            background: #005fa3;
+        }
+
+        @media (max-width: 600px) {
+            #backBtn {
+                padding: 4px 10px;
+                font-size: 14px;
+            }
+
+            #sendBtn,
+            #message {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="chat-container">
+        <button id="backBtn" onclick="window.history.back()">← Back</button>
+        <h2>🌐 Cyber Siksha Community Chat</h2>
+        <div id="messages"></div>
+        <input type="text" id="message" placeholder="Your message..." />
+        <button id="sendBtn">Send</button>
+    </div>
+
+    <script>
+        let username = localStorage.getItem("cyberChatUsername");
+    if (!username) {
+      username = prompt("Enter your name:");
+      if (username) {
+        localStorage.setItem("cyberChatUsername", username);
+      } else {
+        alert("Name is required to enter the chat.");
+        location.reload();
+      }
+    }
+
+    function fetchMessages() {
+      fetch('fetch.php')
+        .then(res => res.text())
+        .then(data => {
+          const msgDiv = document.getElementById('messages');
+          msgDiv.innerHTML = data;
+          msgDiv.scrollTop = msgDiv.scrollHeight;
+        });
+    }
+
+    document.getElementById('sendBtn').addEventListener('click', () => {
+      const msg = document.getElementById('message').value.trim();
+      if (!msg) return;
+
+      fetch('send.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `username=${encodeURIComponent(username)}&message=${encodeURIComponent(msg)}`
+      }).then(() => {
+        document.getElementById('message').value = '';
+        fetchMessages();
+      });
+    });
+
+    setInterval(fetchMessages, 2000);
+    fetchMessages();
+    </script>
+</body>
+
+</html>

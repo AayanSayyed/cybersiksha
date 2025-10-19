@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>File Hash Verifier – Cyber Siksha</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            font-family: "Segoe UI", sans-serif;
+            background-color: #000;
+            color: white;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: var(--y, 50%);
+            left: var(--x, 50%);
+            width: 1500px;
+            height: 1500px;
+            background: radial-gradient(circle at center, #ff00cc, #3333ff, #00ffcc);
+            opacity: 0.15;
+            transform: translate(-50%, -50%);
+            filter: blur(180px);
+            transition: 0.1s ease-out;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            margin-top: 10vh;
+            background: rgba(20, 20, 40, 0.9);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #84e8f0;
+            margin-bottom: 20px;
+        }
+
+        input[type="file"],
+        input[type="text"] {
+            padding: 12px;
+            width: 80%;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            outline: none;
+        }
+
+        button {
+            padding: 12px 25px;
+            background: #0077cc;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #005fa3;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 16px;
+            word-break: break-all;
+            line-height: 1.6;
+            text-align: left;
+            padding: 10px;
+            background: #111;
+            border-radius: 8px;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 14px;
+            background: #0077cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            z-index: 5;
+        }
+
+        .back-button:hover {
+            background: #005fa3;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            input[type="file"],
+            input[type="text"] {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body onmousemove="moveGradient(event)">
+    <a class="back-button" href="main.html">&larr; Back</a>
+
+    <div class="container">
+        <h1>📂 File Hash Verifier</h1>
+        <input type="file" id="fileInput" />
+        <br />
+        <button onclick="calculateHashes()">✨ Generate MD5 & SHA-256</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/spark-md5@3.0.2/spark-md5.min.js"></script>
+    <script>
+        function moveGradient(e) {
+      const x = e.clientX || window.innerWidth / 2;
+      const y = e.clientY || window.innerHeight / 2;
+      document.body.style.setProperty("--x", `${x}px`);
+      document.body.style.setProperty("--y", `${y}px`);
+    }
+
+    async function calculateHashes() {
+      const fileInput = document.getElementById("fileInput");
+      const resultBox = document.getElementById("result");
+
+      if (!fileInput.files.length) {
+        resultBox.innerHTML = `<p style="color:orange;">Please select a file first.</p>`;
+        return;
+      }
+
+      const file = fileInput.files[0];
+      const arrayBuffer = await file.arrayBuffer();
+
+      // SHA-256
+      const sha256Buffer = await crypto.subtle.digest("SHA-256", arrayBuffer);
+      const sha256Hex = Array.from(new Uint8Array(sha256Buffer))
+        .map(b => b.toString(16).padStart(2, "0"))
+        .join("");
+
+      // MD5 using spark-md5
+      const md5 = SparkMD5.ArrayBuffer.hash(arrayBuffer);
+
+      resultBox.innerHTML = `
+        <p><strong>🔎 File Name:</strong> ${file.name}</p>
+        <p><strong>🛠 SHA-256:</strong> ${sha256Hex}</p>
+        <p><strong>⛏ MD5:</strong> ${md5}</p>
+        <p style="font-size: 13px; color: #aaa;">Note: Compare these values with official ones from trusted sources.</p>
+      `;
+    }
+    </script>
+</body>
+
+</html>

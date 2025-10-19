@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="fevicon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3797123951441371"
+        crossorigin="anonymous"></script>
+    <!-- Hamburger Menu Button -->
+    <a href="javascript:void(0);" class="w3-bar-item w3-button w3-hide-large w3-hide-medium" onclick="myFunction()">
+        <i class="fa fa-bars"></i> <!-- FontAwesome icon -->
+    </a>
+
+    <title>Cyber Sikshaa</title>
+    <style>
+         * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0b0b1c;
+      color: #00ffff;
+    }
+
+    /* LOADER */
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #0b0b1c;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 9999;
+    }
+
+    .loader-text {
+      font-size: 1.6rem;
+      color: #6a0dad;
+      text-shadow: 0 0 10px #6a0dad;
+      animation: typing 3s steps(50, end), blink .75s step-end infinite;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #6a0dad;
+      width: 36ch;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .ring {
+      width: 80px;
+      height: 80px;
+      border: 6px solid transparent;
+      border-top: 6px solid #6a0dad;
+      border-right: 6px solid #00ffff;
+      border-radius: 50%;
+      animation: spin 1.2s linear infinite;
+      box-shadow: 0 0 25px #6a0dad, 0 0 10px #00ffff inset;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 36ch }
+    }
+
+    @keyframes blink {
+      from, to { border-color: transparent }
+      50% { border-color: #6a0dad }
+    }
+
+    /* MAIN CONTENT */
+    #content {
+      display: none;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .loader-text {
+        font-size: 1.2rem;
+        width: 28ch;
+      }
+
+      .ring {
+        width: 60px;
+        height: 60px;
+        border-width: 5px;
+      }
+    }
+        #chatbot-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #0077cc;
+            color: white;
+            width: 60px;
+            height: 60px;
+            font-size: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 60px;
+            cursor: move;
+            z-index: 9999;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+        }
+
+        #chatbox {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 300px;
+            max-height: 400px;
+            background: #111;
+            color: white;
+            border-radius: 12px;
+            display: none;
+            flex-direction: column;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+            overflow: hidden;
+            z-index: 9999;
+        }
+
+        #chat-header {
+            background: #0077cc;
+            padding: 10px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #close-chat {
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #chat-messages {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+            font-size: 14px;
+        }
+
+        #chat-input {
+            display: flex;
+            border-top: 1px solid #444;
+        }
+
+        #chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            outline: none;
+            font-size: 14px;
+        }
+
+        #chat-input button {
+            background: #0077cc;
+            border: none;
+            padding: 10px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+  <div id="loader">
+
+    <div class="ring"></div>
+  </div>
+
+  <!-- Your Website Content -->
+
+    <header style="position: relative;">
+
+        <div class="w3-top" class="header" id="home">
+            <div class="w3-bar  w3-card w3-left-align w3-large heeder-large-screen" style="background-color: #000015;">
+                <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-black w3-large "
+                    href="javascript:void(0);" onclick="myFunction()"
+                    title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+                <a href="#home" class="w3-bar-item w3-button w3-padding-large  w3-hover-black">
+                    <h1>Cyber Siksha</h1>
+                </a>
+                <div>
+                    <a href="theory.html"
+                        class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-black">content</a>
+                    <a href="cyber-news.php"
+                        class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-black">News</a>
+                    <!-- <a href="#shop" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-black">Shop</a> -->
+
+                    <a href="web.html"
+                        class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-black">Comunity</a>
+                    <a href="Privacy_policy.html"
+                        class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-black">Privacy Policy</a>
+                    <a href="logout.php"
+                        class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-black">Logout</a>
+                </div>
+
+            </div>
+
+            <!-- Navbar on small screens -->
+            <div id="navDemo" class="w3-bar-block  w3-hide w3-hide-large w3-hide-medium w3-large">
+
+                <a href="theory.html" class="w3-bar-item w3-button w3-padding-large"
+                    onclick="myFunction()">content</a>
+                <!-- <a href="#shop" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()"></a> -->
+                <a href="cyber-news.php" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">News</a>
+                <a href="web.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Comunity</a>
+                <a href="Privacy_policy.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Privacy Policy</a>
+                <a href="logout.php" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Logout</a>
+
+            </div>
+        </div>
+    </header>
+    <section>
+        <div class="hero" id="about">
+            <div class="hero-description">
+                <div class="hero-text">
+                    <h1 class="hero-title">Securing Your Digital World</h1>
+                    <p>
+                        In today's digital world, cybersecurity is crucial for protecting data from threats like hacking
+                        and malware. As online risks grow, safeguarding sensitive information prevents identity theft,
+                        financial loss, and privacy breaches. Effective cybersecurity ensures a safer online experience
+                        for everyone. By prioritizing it, we strengthen digital security globally.
+                    </p>
+                    <span class="w3-text-white social" style="margin-top:050px">
+                <p >Follow us on Social media</p>
+                <div class="w3-margin-top">
+             <a href="https://www.facebook.com/profile.php?id=61552009778010">  <i class="fa fa-facebook-official w3-hover-opacity icons" ></i></a> 
+             <a href="https://www.instagram.com/itz_ayan_407/"><i class="fa fa-instagram w3-hover-opacity icons" ></i></a> 
+             <a href="https://web.telegram.org/k/"><i class="fa fa-telegram w3-hover-opacity icons"></i></a>  
+             <a href="https://pin.it/68NnrYMQJ"><i class="fa fa-pinterest-p w3-hover-opacity icons" ></i></a>  
+             <a href="https://x.com/itz_ayan_407?t=rFePHfIDpjZyVWluEQI_Rw&s=09"><i class="fa fa-twitter w3-hover-opacity icons"></i></a>  
+             <a href="https://www.linkedin.com/in/ayan-sayyed-8b3099270/"><i class="fa fa-linkedin w3-hover-opacity icons"></i></a>   
+             </div>
+              </span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <main style="padding-bottom:40px ;">
+        <h2 class="title" id="games">List of Content</h2>
+        <div class="games">
+            <div class="game-list">
+                <a
+                    href="url-checker.php"><img src="images/internet-www-svgrepo-com.svg"playstation-brands style="width:100px; height: 100px;" ></a>
+                <h3>Url Checker</h3>
+                <p></p>
+            </div>
+            <div class="game-list">
+                <a
+                    href="pwc.html"><img src="images/browser-security-svgrepo-com.svg" alt="pacman" style="width:100px; height: 100px;"/></a>
+                <h3>Password Strength Checker</h3>
+                <p></p>
+            </div>
+            <div class="game-list">
+                <a
+                    href="quiz.html"><img src="images/test-svgrepo-com.svg" alt="spiderman" style="width:100px; height: 100px;"/></a>
+                <h3>Quiz</h3>
+                <p></p>
+            </div>
+            <div class="game-list">
+                <a
+                    href="ipinfo.html"><img src="images/address-dedicated-globe-svgrepo-com.svg" alt="monster" style="width:100px; height: 100px;"/></a>
+                <h3>IP Info</h3>
+                <p></p>
+            </div>
+            <div class="game-list">
+                <a
+                    href="findme.html"><img src="images/location-pin-svgrepo-com.svg" alt="joker" style="width:100px; height: 100px;" ></a>
+                <h3>Location Tracker</h3>
+                <p></p>
+            </div>
+            <div class="game-list">
+                <a
+                    href="numinfo.html"><img src="images/file-svgrepo-com.svg" alt="halloween" style="width:100px; height: 100px;"/></a>
+                <h3>File Hash Verifier</h3>
+                <p></p>
+
+
+            </div>
+            <div class="games">
+                <div class="game-list">
+                    <a href="email-analyzer.html">
+                        <img src="images/email-search-svgrepo-com.svg"playstation-brands style="width:100px; height: 100px;" ></a>
+                    <h3>Email Analyzer</h3>
+                    <p></p>
+                </div>
+                <div class="game-list">
+                    <a
+                        href="img_meta.html"><img src="images/browser-image-svgrepo-com.svg" alt="pacman" style="width:100px; height: 100px;"/></a>
+                    <h3>Image Meta Data</h3>
+                    <p></p>
+                </div>
+                <div class="game-list">
+                    <a
+                        href="fpd.html"><img src="images/profile-svgrepo-com.svg" alt="spiderman" style="width:100px; height: 100px;"/></a>
+                    <h3>Fack Profile Detector</h3>
+                    <p></p>
+                </div>
+                <div class="game-list">
+                    <a href="database-hacking.html">
+                        <img src="images/database-hack.png" alt="monster" style="width:100px; height: 100px;"/></a>
+                    <h3>Database Hacking</h3>
+                    <p></p>
+                </div>
+                <div class="game-list">
+                    <a
+                        href="android-hacking.html"><img src="images/android-png.png" alt="joker" style="width:100px; height: 100px;" ></a>
+                    <h3>Android Hacking</h3>
+                    <p></p>
+                </div>
+                <div class="game-list">
+                    <a
+                        href="socialmedia-hacking.html"><img src="images/social-crack.webp" alt="halloween" style="width:100px; height: 100px;"/></a>
+                    <h3>Socialmedia Hacking</h3>
+                    <p></p>
+                </div>
+
+
+            </div>
+            <div class="store" id="shop">
+                <!-- <h2 class="title">Our Store</h2> -->
+
+
+            </div>
+
+        </div>
+        </div>
+        <!--///////////////////////////////////////////////////////////////////////////////////////-->
+        <div>
+
+            <h2 class="title">Reach out to us</h2>
+            <div class="contact" id="contact" style="padding-bottom: 10px !important;">
+                <div class="contact-list contact-address">
+                    <h5><span><i class="fa fa-map-marker w3-xlarge w3-text-light-grey"></i></span>Address</h5>
+                    <p>india, maharashtra, pune </p>
+                    <p>Sr no 12 yerwada pune </p>
+                    <p>Laxmi nagar banjara chouk </p>
+                </div>
+                <div class="contact-list">
+                    <h5><span><i class="fa fa-envelope w3-xlarge w3-text-light-grey"></i></span>Receive weekly update
+                        email</h5>
+                    <div class="email-contact">
+                        <!--           <input placeholder="Email"  type="email"  style="margin: 8px 0px !important;"/> -->
+                        <h3>cybersiksha@gamil.com</h3>
+
+                        <a href="https://mail.google.com/mail/u/0/#inbox?compose=new">
+                            <button class="w3-btn w3-red w3-round " style="width: 100px; padding:3px 10px !important">Send mail</button></a>
+                    </div>
+
+                </div>
+                <div class="contact-list">
+                    <h5><span><i class="fa fa-phone w3-xlarge w3-text-light-grey"></i></span>Phone</h5>
+                    <p> 777-407-3427</p>
+                    <p>706-734-2591</p>
+                </div>
+
+
+            </div>
+        </div>
+
+    </main>
+    <hr>
+    <footer>
+        <p>© 2024 CyberSikshaa.online – Ethical Hacking Training, Cybersecurity Courses, Vulnerability Assessment, and
+            Penetration Testing .</p>
+    </footer>
+
+    <!-- Chatbot UI -->
+    <div id="chatbot-icon" title="Chat with us">💬</div>
+
+    <div id="chatbox">
+        <div id="chat-header">Cyber Siksha Chatbot <span id="close-chat">✖</span></div>
+        <div id="chat-messages"></div>
+        <div id="chat-input">
+            <input type="text" id="user-input" placeholder="Type your message..." />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script>
+        
+       
+  // Existing script...
+  
+  // Add this function to handle hamburger toggle
+  function myFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") === -1) {
+      x.className += " w3-show";
+    } else {
+      x.className = x.className.replace(" w3-show", "");
+    }
+  }
+
+  // Your other JS remains unchanged
+
+
+
+         window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("content").style.display = "block";
+      }, 3000);
+    });
+        const icon = document.getElementById("chatbot-icon");
+      const chatbox = document.getElementById("chatbox");
+      const closeBtn = document.getElementById("close-chat");
+      const messages = document.getElementById("chat-messages");
+    
+      // Toggle open/close
+      icon.onclick = () => chatbox.style.display = "flex";
+      closeBtn.onclick = () => chatbox.style.display = "none";
+    
+      // Dragging icon
+      icon.onmousedown = function (e) {
+        let shiftX = e.clientX - icon.getBoundingClientRect().left;
+        let shiftY = e.clientY - icon.getBoundingClientRect().top;
+    
+        function moveAt(pageX, pageY) {
+          icon.style.left = pageX - shiftX + "px";
+          icon.style.top = pageY - shiftY + "px";
+        }
+    
+        function onMouseMove(e) {
+          moveAt(e.pageX, e.pageY);
+        }
+    
+        document.addEventListener("mousemove", onMouseMove);
+    
+        icon.onmouseup = function () {
+          document.removeEventListener("mousemove", onMouseMove);
+          icon.onmouseup = null;
+        };
+      };
+    
+      icon.ondragstart = () => false;
+    
+      // Send message
+      function sendMessage() {
+        const input = document.getElementById("user-input");
+        const msg = input.value.trim();
+        if (!msg) return;
+    
+        messages.innerHTML += `<div><b>You:</b> ${msg}</div>`;
+        input.value = "";
+    
+        fetch("chat-api.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: msg })
+        })
+        .then(res => res.json())
+        .then(data => {
+          messages.innerHTML += `<div><b>Bot:</b> ${data.reply}</div>`;
+          messages.scrollTop = messages.scrollHeight;
+        })
+        .catch(err => {
+          messages.innerHTML += `<div style="color:red;">Error fetching reply</div>`;
+          console.error(err);
+        });
+      }
+    </script>
+</body>
+
+</html>

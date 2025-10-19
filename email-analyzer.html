@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Analyzer – Cyber Siksha</title>
+    <style>
+        body {
+            background: #0b0b1c;
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #141430;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: none;
+            margin: 10px 0;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #0077cc;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #005fa3;
+        }
+
+        .results {
+            margin-top: 20px;
+            background: #111;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        a.back {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #00ffff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>🔍 OSINT Email Analyzer</h2>
+        <input type="email" id="email" placeholder="Enter email address" />
+        <button onclick="checkEmail()">Check Email</button>
+        <div class="results" id="results"></div>
+        <a href="index.html" class="back">⬅️ Back to Tools</a>
+    </div>
+
+    <script>
+        function checkEmail() {
+      const email = document.getElementById("email").value.trim();
+      const results = document.getElementById("results");
+      if (!email) {
+        results.innerHTML = "<p style='color: orange;'>⚠️ Please enter a valid email.</p>";
+        return;
+      }
+
+      results.innerHTML = "⏳ Checking...";
+
+      fetch('email-check.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `email=${encodeURIComponent(email)}`
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.error) {
+          results.innerHTML = `<p style="color:red;">❌ ${data.error}</p>`;
+          return;
+        }
+
+        results.innerHTML = `
+          <p><b>Reputation:</b> ${data.reputation}</p>
+          <p><b>Suspicious:</b> ${data.suspicious ? "Yes" : "No"}</p>
+          <p><b>Blacklisted:</b> ${data.details.blacklisted ? "Yes" : "No"}</p>
+          <p><b>Malicious Activity:</b> ${data.details.malicious_activity ? "Yes" : "No"}</p>
+          <p><b>Leaked:</b> ${data.details.credentials_leaked ? "Yes" : "No"}</p>
+          <p><b>Domain:</b> ${data.domain}</p>
+        `;
+      })
+      .catch(err => {
+        console.error(err);
+        results.innerHTML = "<p style='color:red;'>❌ Failed to fetch data. Please try again later.</p>";
+      });
+    }
+    </script>
+</body>
+
+</html>

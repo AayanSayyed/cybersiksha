@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Secure Coding Practices - Learn best practices for writing secure code.">
+    <title>Secure Coding Practices</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgba(0, 0, 21, 1); /* Dark Blue Background */
+            color: #f4f4f4;
+            line-height: 1.6;
+            position: relative;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #1c1c1c;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+        }
+        h1, h2 {
+            color: #c7d0d8;
+        }
+        ol li {
+            margin-bottom: 10px;
+        }
+        .footer {
+            margin-top: 40px;
+            font-size: 0.8em;
+            color: #999;
+            text-align: center;
+        }
+        a {
+            color: #a8c1e1;
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: inline-block;
+            padding: 12px;
+            background-color: #3a3a3a;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50%;
+            font-size: 20px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .back-button:hover {
+            background-color: #555;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="defenses.html" class="back-button">&#8592;</a>
+        <h1>Secure Coding Practices</h1>
+        <p>Following secure coding practices helps prevent cyber attacks and enhances the overall security of applications.</p>
+
+        <h2>1. Input Validation</h2>
+        <p>Prevent common attacks like SQL injection and Cross-Site Scripting (XSS):</p>
+        <ol>
+            <li>Sanitize and validate user input before processing.</li>
+            <li>Use prepared statements and parameterized queries in databases.</li>
+            <li>Escape special characters to prevent XSS vulnerabilities.</li>
+        </ol>
+
+        <h2>2. Code Reviews & Security Audits</h2>
+        <p>Regularly analyze code for security flaws:</p>
+        <ol>
+            <li>Perform peer code reviews to detect vulnerabilities early.</li>
+            <li>Conduct static and dynamic security analysis.</li>
+            <li>Use automated security scanning tools to identify potential risks.</li>
+        </ol>
+
+        <h2>3. Use Secure Frameworks & Libraries</h2>
+        <p>Avoid outdated and vulnerable software components:</p>
+        <ol>
+            <li>Keep frameworks and third-party libraries updated.</li>
+            <li>Use security-enhanced libraries designed to prevent attacks.</li>
+            <li>Verify the integrity of dependencies before integration.</li>
+        </ol>
+
+        <div class="footer">
+            <p>&copy; 2024 Cybersecurity Awareness. This guide is for educational purposes only.</p>
+        </div>
+    </div>
+</body>
+</html>

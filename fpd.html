@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fake Profile Detector – Cyber Siksha</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #0b0b1c;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: rgba(20, 20, 40, 0.9);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            color: #00ffff;
+            margin-bottom: 20px;
+        }
+
+        input,
+        button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border: none;
+            font-size: 16px;
+        }
+
+        input {
+            background: #111;
+            color: white;
+        }
+
+        button {
+            background: #0077cc;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #005fa3;
+        }
+
+        .result {
+            margin-top: 20px;
+            background: #111;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .preview {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .preview img {
+            max-width: 120px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            background: #0077cc;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+        }
+
+        .back-button:hover {
+            background: #005fa3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>🕵️ Fake Profile Detector</h2>
+        <form id="fakeProfileForm">
+            <input type="text" id="username" placeholder="Enter username" required />
+            <input type="email" id="email" placeholder="Enter email (optional)" />
+            <input type="text" id="fullname" placeholder="Enter full name (optional)" />
+            <input type="file" id="photo" accept="image/*" />
+            <div class="preview" id="photoPreview"></div>
+            <button type="submit">🔍 Scan for Fake Profile</button>
+        </form>
+        <div class="result" id="resultBox"></div>
+        <a href="main.html" class="back-button">⬅️ Back</a>
+    </div>
+
+    <script>
+        const form = document.getElementById('fakeProfileForm');
+    const resultBox = document.getElementById('resultBox');
+    const photoInput = document.getElementById('photo');
+    const photoPreview = document.getElementById('photoPreview');
+
+    // Show photo preview
+    photoInput.addEventListener('change', function () {
+      const file = photoInput.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          photoPreview.innerHTML = `<img src="${e.target.result}" alt="Profile Preview">`;
+        };
+        reader.readAsDataURL(file);
+      } else {
+        photoPreview.innerHTML = '';
+      }
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const fullname = document.getElementById('fullname').value.trim();
+      const photo = photoInput.files[0];
+
+      resultBox.innerHTML = "Checking across platforms... ⏳";
+
+      setTimeout(() => {
+        let fakeScore = 0;
+        let reasons = [];
+
+        if (username.length < 5 || /[0-9]{4,}/.test(username)) {
+          fakeScore++;
+          reasons.push("Username looks generic or auto-generated.");
+        }
+        if (email && email.endsWith("@disposablemail.com")) {
+          fakeScore++;
+          reasons.push("Uses disposable email domain.");
+        }
+        if (!fullname || fullname.split(" ").length < 2) {
+          fakeScore++;
+          reasons.push("Incomplete or suspicious full name.");
+        }
+        if (!photo) {
+          fakeScore++;
+          reasons.push("No profile photo provided.");
+        }
+
+        if (fakeScore === 0) {
+          resultBox.innerHTML = `<p style='color:#00ff99;'>✅ No major red flags detected.</p>`;
+        } else {
+          resultBox.innerHTML = `
+            <p style='color:#ff4d4d;'>⚠️ Possible fake profile detected!</p>
+            <ul>${reasons.map(r => `<li>${r}</li>`).join('')}</ul>
+          `;
+        }
+      }, 1500);
+    });
+    </script>
+</body>
+
+</html>

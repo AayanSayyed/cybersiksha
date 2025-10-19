@@ -1,128 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Step-by-step guide on how to surf the web anonymously using various tools and techniques.">
-    <title>How to Surf the Web Anonymously</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anonymous Browsing Simulator – Cyber Siksha</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: rgba(0, 0, 21, 1); /* Dark Blue Background */
-            color: #f4f4f4; /* Light gray text for readability */
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #0d0d1a;
+            color: #f4f4f4;
             line-height: 1.6;
-            position: relative;
+            padding: 1rem;
         }
+
         .container {
-            max-width: 900px;
-            margin: 20px auto;
+            max-width: 1000px;
+            margin: auto;
+            background-color: #1c1c2e;
             padding: 20px;
-            background-color: #1c1c1c; /* Dark gray container background for contrast */
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
         }
-        h1, h2 {
-            color: #c7d0d8; /* Softer gray for headings */
+
+        h1,
+        h2 {
+            color: #85c7f2;
         }
-        code {
-            background-color: #2a2a2a;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 0.9em;
-            color: #c7d0d8; /* Code color for readability */
+
+        .step {
+            margin-bottom: 2rem;
         }
-        pre {
-            background-color: #111;
-            color: #eee;
-            padding: 10px;
-            border-radius: 6px;
-            overflow-x: auto;
-        }
-        ol li {
-            margin-bottom: 10px;
-        }
-        .footer {
+
+        .simulator {
             margin-top: 40px;
-            font-size: 0.8em;
-            color: #999;
+            background: #000;
+            padding: 20px;
+            border-radius: 12px;
+            color: #0f0;
+            box-shadow: 0 0 10px lime;
+            min-height: 200px;
+            white-space: pre-line;
+        }
+
+        .btn {
+            background-color: #333;
+            color: #0f0;
+            border: 1px solid #0f0;
+            padding: 10px 16px;
+            border-radius: 5px;
+            margin: 8px 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #444;
+        }
+
+        .footer {
             text-align: center;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #aaa;
         }
-        a {
-            color: #a8c1e1; /* Light blue for links */
-        }
+
         .back-button {
             position: absolute;
             top: 20px;
             left: 20px;
-            display: inline-block;
-            padding: 12px;
             background-color: #3a3a3a;
             color: #fff;
             text-decoration: none;
+            padding: 10px;
             border-radius: 50%;
             font-size: 20px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            transition: 0.3s ease;
         }
+
         .back-button:hover {
             background-color: #555;
             transform: scale(1.1);
         }
     </style>
 </head>
+
 <body>
+    <a href="attack.html" class="back-button">&#8592;</a>
+
     <div class="container">
-        <a href="index.html" class="back-button">&#8592;</a> <!-- Back arrow button in top-left -->
+        <h1>🔐 Learn to Surf the Web Anonymously</h1>
+        <p>In this simulation, you'll learn how to protect your identity online by using VPNs, the Tor network, secure
+            search engines, and privacy-focused habits. Before doing anything, try making a search and see how traceable
+            you are!</p>
 
-        <h1>How to Surf the Web Anonymously</h1>
-        <p>This guide will walk you through the steps to surf the web anonymously using different tools and techniques. Remember that anonymity on the internet is not absolute, and responsible use is key.</p>
-        
-        <h2>1. Use a VPN (Virtual Private Network)</h2>
-        <p>A VPN masks your IP address by routing your internet traffic through a remote server. This hides your real location and encrypts your data.</p>
-        <ol>
-            <li><strong>Choose a reliable VPN service:</strong> Popular options include NordVPN, ExpressVPN, and ProtonVPN. Make sure to choose a VPN with a strict no-logs policy.</li>
-            <li><strong>Download and install the VPN client:</strong> After selecting a VPN, download and install its software on your device.</li>
-            <li><strong>Connect to a server:</strong> Launch the VPN client and connect to a server of your choice. Typically, choosing a server in a different country increases your anonymity.</li>
-            <li><strong>Check your IP:</strong> After connecting, verify that your IP address has changed by visiting a website like <a href="https://whatismyipaddress.com">WhatIsMyIPAddress.com</a>.</li>
-        </ol>
+        <div class="step">
+            <h2>Step 1: Use a VPN</h2>
+            <p>A VPN (Virtual Private Network) hides your real IP address and encrypts your internet traffic. This makes
+                your connection more private and secure.</p>
+        </div>
 
-        <h2>2. Use the Tor Browser</h2>
-        <p>The Tor browser allows you to browse the internet anonymously by routing your traffic through a series of volunteer-operated servers, hiding your identity and location.</p>
-        <ol>
-            <li><strong>Download Tor Browser:</strong> Visit the official Tor Project website at <a href="https://www.torproject.org">torproject.org</a> and download the browser for your operating system.</li>
-            <li><strong>Install and launch the browser:</strong> Follow the installation steps and launch the Tor browser.</li>
-            <li><strong>Start browsing:</strong> Once connected, you can browse the internet anonymously. Keep in mind that Tor is slower than regular browsing due to the multiple layers of encryption.</li>
-        </ol>
+        <div class="step">
+            <h2>Step 2: Use Tor Browser</h2>
+            <p>Tor is a browser that bounces your traffic through several nodes. It hides your real location and helps
+                bypass censorship. But it’s slower than normal browsing.</p>
+        </div>
 
-        <h2>3. Use a Privacy-Focused Search Engine</h2>
-        <p>Search engines like Google track your search history and data. Instead, use privacy-focused search engines like <a href="https://duckduckgo.com">DuckDuckGo</a> or <a href="https://startpage.com">Startpage</a> that don’t track your searches.</p>
-        <ol>
-            <li><strong>Visit DuckDuckGo:</strong> Go to <a href="https://duckduckgo.com">duckduckgo.com</a> and start searching without being tracked.</li>
-            <li><strong>Set DuckDuckGo as your default search engine:</strong> Change your browser settings to make DuckDuckGo your default search engine to protect your searches by default.</li>
-        </ol>
+        <div class="step">
+            <h2>Step 3: Use Privacy Search Engines</h2>
+            <p>Use DuckDuckGo or Startpage instead of Google. They don’t track you or sell your search history.</p>
+        </div>
 
-        <h2>4. Disable Tracking in Your Browser</h2>
-        <p>Most browsers allow tracking by default, which can compromise your privacy. Disable tracking features in your browser settings.</p>
-        <ol>
-            <li><strong>Enable Do Not Track:</strong> Go to your browser’s settings and enable the "Do Not Track" option.</li>
-            <li><strong>Clear cookies and cache regularly:</strong> Regularly clear your cookies and browsing history to minimize tracking.</li>
-            <li><strong>Use browser extensions:</strong> Consider using privacy-focused extensions like uBlock Origin or Privacy Badger to block trackers and ads.</li>
-        </ol>
+        <div class="step">
+            <h2>Step 4: Block Trackers</h2>
+            <p>Install browser extensions like uBlock Origin or Privacy Badger to block ads and tracking scripts that
+                spy on your browsing behavior.</p>
+        </div>
 
-        <h2>5. Practice Safe Online Behavior</h2>
-        <p>Beyond using tools, your behavior online plays a big role in maintaining anonymity. Be cautious about what you share and where.</p>
-        <ol>
-            <li><strong>Avoid sharing personal information:</strong> Be mindful of the information you share on social media or online forums. Even seemingly innocent details can be used to identify you.</li>
-            <li><strong>Use aliases and disposable emails:</strong> When signing up for services or creating accounts, consider using pseudonyms and temporary email addresses.</li>
-            <li><strong>Stay updated:</strong> Regularly update your software to ensure that you are protected from known vulnerabilities.</li>
-        </ol>
+        <div class="step">
+            <h2>Step 5: Good Habits = Privacy</h2>
+            <p>Use fake names, temporary emails, and never overshare. Your behavior matters more than you think!</p>
+        </div>
 
-        <h2>6. Conclusion</h2>
-        <p>Surfing the web anonymously involves a combination of tools and mindful practices. While you may never achieve 100% anonymity, following these steps can greatly enhance your privacy online. Always use these tools responsibly and within the bounds of the law.</p>
+        <h2>🧪 Simulator</h2>
+        <p>Click below to simulate what happens when you browse the web with and without privacy tools:</p>
+
+        <div class="simulator" id="terminal">
+            Welcome to Cyber Siksha Anonymity Lab
+        </div>
+
+        <div>
+            <button class="btn" onclick="simulate('vpn')">🔌 Connect VPN</button>
+            <button class="btn" onclick="simulate('tor')">🌐 Launch Tor Browser</button>
+            <button class="btn" onclick="simulate('duck')">🔍 Use DuckDuckGo</button>
+            <button class="btn" onclick="simulate('block')">🚫 Block Trackers</button>
+            <button class="btn" onclick="simulate('habits')">👤 Use Good Habits</button>
+            <button class="btn" onclick="simulate('search')">🔎 Search the Web</button>
+            <button class="btn" onclick="clearSim()">🧹 Clear</button>
+        </div>
 
         <div class="footer">
-            <p>&copy; 2024 Ethical Hacking Tutorials. This guide is for educational purposes only. Use anonymity tools responsibly.</p>
+            &copy; 2024 Cyber Siksha | This simulator is for ethical learning only.
         </div>
     </div>
+
+    <script>
+        const terminal = document.getElementById('terminal');
+
+    let isVPN = false;
+    let isTor = false;
+
+    function simulate(action) {
+      let message = '';
+      switch (action) {
+        case 'vpn':
+          isVPN = true;
+          message = '✅ VPN connected: Your IP is now hidden and encrypted.';
+          break;
+        case 'tor':
+          isTor = true;
+          message = '🌍 Tor browser launched: You are now browsing through anonymous Tor nodes.';
+          break;
+        case 'duck':
+          message = '🔍 DuckDuckGo set as your default search engine. No tracking, no data selling!';
+          break;
+        case 'block':
+          message = '🛡️ Privacy extensions enabled: Ads and trackers are now blocked.';
+          break;
+        case 'habits':
+          message = '🔐 Good habits in place: You’re using aliases and avoiding personal exposure.';
+          break;
+        case 'search':
+          if (!isVPN && !isTor) {
+            message = '⚠️ You searched the web without privacy tools.\nYour IP and activity are traceable!';
+          } else {
+            message = '✅ You searched the web anonymously.\nYour IP is hidden using VPN or Tor.';
+          }
+          break;
+      }
+
+      if (message !== '') {
+        terminal.innerText += `\n\n> ${message}`;
+        terminal.scrollTop = terminal.scrollHeight;
+      }
+    }
+
+    function clearSim() {
+      isVPN = false;
+      isTor = false;
+      terminal.innerText = 'Welcome to Cyber Siksha Anonymity Lab';
+    }
+    </script>
 </body>
+
 </html>

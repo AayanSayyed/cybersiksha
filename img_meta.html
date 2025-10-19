@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Metadata (EXIF) Viewer – Cyber Siksha</title>
+    <script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            min-height: 100vh;
+            font-family: "Segoe UI", sans-serif;
+            background-color: #0b0b1c;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: var(--y, 50%);
+            left: var(--x, 50%);
+            width: 1500px;
+            height: 1500px;
+            background: radial-gradient(circle at center,
+                    #ff00cc,
+                    #3333ff,
+                    #00ffcc);
+            opacity: 0.1;
+            transform: translate(-50%, -50%);
+            filter: blur(180px);
+            transition: 0.1s ease-out;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            background: rgba(20, 20, 40, 0.9);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+            z-index: 1;
+        }
+
+        h2 {
+            text-align: center;
+            color: #00ffff;
+        }
+
+        input[type="file"] {
+            display: block;
+            margin: 20px 0;
+            padding: 10px;
+            background: #111;
+            border: none;
+            color: white;
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .output {
+            background: #111;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 10px;
+            overflow-x: auto;
+        }
+
+        .remove-btn {
+            display: inline-block;
+            margin-top: 15px;
+            background: #cc0000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .remove-btn:hover {
+            background: #a30000;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            background: #0077cc;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+        }
+
+        .back-button:hover {
+            background: #005fa3;
+        }
+
+        .warning-box {
+            background: #1a1a2e;
+            padding: 15px;
+            border-left: 4px solid #ff4d4d;
+            border-radius: 8px;
+            margin-top: 25px;
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            .remove-btn,
+            .back-button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body onmousemove="moveGradient(event)">
+    <div class="container">
+        <h2>🖼️ Image Metadata (EXIF) Viewer</h2>
+        <input type="file" id="imageInput" accept="image/jpeg,image/jpg" />
+        <div class="output" id="metadata"></div>
+        <div class="warning-box" id="warningBox">
+            <h4>⚠️ Sensitive Metadata Found</h4>
+            <p>
+                Your image contains metadata like GPS location, device model, time of
+                capture, and more.<br />
+          This could expose your private information when shared online. It's
+          recommended to remove this metadata before uploading.
+            </p>
+        </div>
+        <button id="removeMetadataBtn" class="remove-btn" style="display: none">
+        🧹 Remove Metadata & Download
+      </button>
+        <a href="main.html" class="back-button">⬅️ Back </a>
+    </div>
+    <script>
+        let originalImage = null;
+
+      function moveGradient(e) {
+        const x = e.clientX || window.innerWidth / 2;
+        const y = e.clientY || window.innerHeight / 2;
+        document.body.style.setProperty("--x", `${x}px`);
+        document.body.style.setProperty("--y", `${y}px`);
+      }
+
+      document
+        .getElementById("imageInput")
+        .addEventListener("change", function (event) {
+          const file = event.target.files[0];
+          if (!file) return;
+          originalImage = file;
+
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            const img = new Image();
+            img.onload = function () {
+              EXIF.getData(img, function () {
+                const allMetaData = EXIF.getAllTags(this);
+                const outputDiv = document.getElementById("metadata");
+                const warningBox = document.getElementById("warningBox");
+
+                if (Object.keys(allMetaData).length === 0) {
+                  outputDiv.innerHTML =
+                    "<p>⚠️ No metadata found in this image.</p>";
+                  warningBox.style.display = "none";
+                  return;
+                }
+
+                let output = "<h3>📋 Extracted Metadata:</h3><ul>";
+                for (let tag in allMetaData) {
+                  output += `<li><strong>${tag}</strong>: ${allMetaData[tag]}</li>`;
+                }
+                output += "</ul>";
+                outputDiv.innerHTML = output;
+                document.getElementById("removeMetadataBtn").style.display =
+                  "inline-block";
+                warningBox.style.display = "block";
+              });
+            };
+            img.src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        });
+
+      document
+        .getElementById("removeMetadataBtn")
+        .addEventListener("click", function () {
+          if (!originalImage) return;
+
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            const img = new Image();
+            img.onload = function () {
+              const canvas = document.createElement("canvas");
+              canvas.width = img.width;
+              canvas.height = img.height;
+              const ctx = canvas.getContext("2d");
+              ctx.drawImage(img, 0, 0);
+
+              canvas.toBlob(function (blob) {
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement("a");
+                link.href = url;
+                link.download = "image_no_metadata.jpg";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }, "image/jpeg");
+            };
+            img.src = e.target.result;
+          };
+          reader.readAsDataURL(originalImage);
+        });
+    </script>
+</body>
+
+</html>

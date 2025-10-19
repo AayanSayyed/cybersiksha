@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Comprehensive guide on network security measures including firewalls, IDS/IPS, and network segmentation."
+    />
+    <title>Network Security Measures</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: rgba(0, 0, 21, 1); /* Dark Blue Background */
+        color: #f4f4f4; /* Light gray text for readability */
+        line-height: 1.6;
+        position: relative;
+      }
+      .container {
+        max-width: 900px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #1c1c1c; /* Dark gray container background */
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+      }
+      h1,
+      h2 {
+        color: #c7d0d8; /* Softer gray for headings */
+      }
+      ol li {
+        margin-bottom: 10px;
+      }
+      .footer {
+        margin-top: 40px;
+        font-size: 0.8em;
+        color: #999;
+        text-align: center;
+      }
+      a {
+        color: #a8c1e1; /* Light blue for links */
+      }
+      .back-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        display: inline-block;
+        padding: 12px;
+        background-color: #3a3a3a;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 50%;
+        font-size: 20px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+      }
+      .back-button:hover {
+        background-color: #555;
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <a href="defenses.html" class="back-button">&#8592;</a>
+      <!-- Back arrow button -->
+
+      <h1>Network Security Measures</h1>
+      <p>
+        Network security is crucial for protecting systems, data, and
+        communications from cyber threats. Below are key measures to enhance
+        network security.
+      </p>
+
+      <h2>1. Firewalls</h2>
+      <p>
+        Firewalls act as a barrier between trusted and untrusted networks. They
+        help monitor and filter traffic based on predefined security rules.
+      </p>
+      <ul>
+        <li>
+          Types of firewalls: Packet-filtering, Stateful inspection, Proxy
+          firewalls, Next-Gen Firewalls.
+        </li>
+        <li>Prevent unauthorized access by blocking malicious traffic.</li>
+        <li>Common firewalls: Cisco ASA, pfSense, Fortinet.</li>
+      </ul>
+
+      <h2>2. Intrusion Detection & Prevention Systems (IDS/IPS)</h2>
+      <p>
+        These systems detect and prevent unauthorized access or attacks in real
+        time.
+      </p>
+      <ul>
+        <li>
+          IDS (Intrusion Detection System): Monitors and alerts suspicious
+          activity.
+        </li>
+        <li>
+          IPS (Intrusion Prevention System): Blocks malicious activities before
+          they reach the network.
+        </li>
+        <li>Examples: Snort, Suricata, Cisco Firepower.</li>
+      </ul>
+
+      <h2>3. Network Segmentation</h2>
+      <p>
+        Segmenting networks minimizes the impact of cyber threats by isolating
+        critical assets.
+      </p>
+      <ul>
+        <li>Divides a network into smaller, controlled zones.</li>
+        <li>Reduces lateral movement of attackers.</li>
+        <li>Common techniques: VLANs, Subnetting, Zero Trust Architecture.</li>
+      </ul>
+
+      <div class="footer">
+        <p>
+          &copy; 2024 Cyber Security Guide. This information is for educational
+          purposes only.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

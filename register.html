@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register | Cyber Siksha</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/x-icon" href="fevicon.png" />
+
+    <style>
+        #strengthMessage {
+            margin-top: 8px;
+            font-weight: bold;
+        }
+
+        .weak {
+            color: red;
+        }
+
+        .medium {
+            color: orange;
+        }
+
+        .strong {
+            color: green;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: orange;
+            box-shadow: 0 0 10px rgba(255, 165, 0, 0.8);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="event" id="events">
+        <h2 class="title">Welcome!</h2>
+
+        <div class="event-hero" style="position: relative;">
+            <div class="event-text">
+                <h2 class="badge" style="background-color: orange; color: #000015; padding: 10px;">
+                    Register now to stay tuned and secure
+                </h2>
+                <h1 class="event-title">"Guard Your Online Identity"</h1>
+                <p>
+                    Explore the world of ethical hacking with us! Our website offers hands-on content to help you master
+                    the
+                    skills needed to protect systems and networks from cyber threats. Learn how to identify
+                    vulnerabilities,
+                    strengthen security, and stay ahead of malicious hackers. Join us in making the digital world a
+                    safer place
+                    through ethical hacking.
+                </p>
+                <h4>Save your place</h4>
+                <form action="register.php" method="POST">
+                    <label for="username">Enter Username</label><br />
+                    <input type="text" name="username" id="username" placeholder="Username" required /><br /><br />
+
+                    <label for="password">Set Password</label><br />
+                    <input type="password" name="password" id="password" placeholder="Password" required /><br />
+                    <div id="strengthMessage"></div>
+
+                    <br />
+                    <button class="w3-btn w3-red w3-margin-top w3-round">Register</button>
+                </form>
+            </div>
+
+            <div class="event-image">
+                <img src="anime2.png" alt="Cyber illustration" />
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h2 class="title">Reach out to us</h2>
+        <div class="contact" id="contact" style="padding-bottom: 10px !important;">
+            <div class="contact-list contact-address">
+                <h5><i class="fa fa-map-marker w3-xlarge w3-text-light-grey"></i> Address</h5>
+                <p>India, Maharashtra, Pune</p>
+                <p>Sr no 12, Yerwada, Pune</p>
+                <p>Laxmi Nagar, Banjara Chouk</p>
+            </div>
+            <div class="contact-list">
+                <h5><i class="fa fa-envelope w3-xlarge w3-text-light-grey"></i> Email</h5>
+                <h3>cybersiksha@gmail.com</h3>
+                <a href="https://mail.google.com/mail/u/0/#inbox?compose=new">
+                    <button class="w3-btn w3-red w3-round" style="width: 100px;">Send Mail</button>
+                </a>
+            </div>
+            <div class="contact-list">
+                <h5><i class="fa fa-phone w3-xlarge w3-text-light-grey"></i> Phone</h5>
+                <p>777-407-3427</p>
+                <p>706-734-2591</p>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+    <footer>
+        <p>
+            © 2024 CyberSikshaa.online – Ethical Hacking Training, Cybersecurity Courses, Vulnerability Assessment, and
+            Penetration Testing.
+        </p>
+    </footer>
+
+    <!-- Password strength checker -->
+    <script>
+        const passwordInput = document.getElementById("password");
+    const strengthMessage = document.getElementById("strengthMessage");
+
+    passwordInput.addEventListener("input", function () {
+      const value = passwordInput.value;
+      let strength = 0;
+
+      if (value.length >= 6) strength++;
+      if (/[A-Z]/.test(value)) strength++;
+      if (/[0-9]/.test(value)) strength++;
+      if (/[@#$%^&*!]/.test(value)) strength++;
+
+      if (strength === 0) {
+        strengthMessage.textContent = "";
+      } else if (strength <= 1) {
+        strengthMessage.textContent = "Weak Password";
+        strengthMessage.className = "weak";
+      } else if (strength === 2 || strength === 3) {
+        strengthMessage.textContent = "Medium Strength";
+        strengthMessage.className = "medium";
+      } else {
+        strengthMessage.textContent = "Strong Password";
+        strengthMessage.className = "strong";
+      }
+    });
+    </script>
+</body>
+
+</html>
